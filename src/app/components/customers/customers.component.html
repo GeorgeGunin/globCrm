@@ -1,0 +1,29 @@
+<div class="row mt-5">
+  <div class="col-sm-12"> 
+    <h2><i class="fa fa-users"></i> Customers</h2>
+    <p class="mt-5">
+      <a href="" routerLink="/customer/add" class="btn btn-primary btn-lg"><i class="fa fa-plus-circle"></i> Add Customer</a>
+    </p>
+  </div>
+</div>
+
+<div class = "row mt-5">
+    <div *ngFor = "let customer of customers" class = "col-sm-12 mb-3">
+       <div class = "card">
+         <div class = "card-header">
+           <a href="" routerLink="/customer/{{ customer.id }}">{{customer.firstName}} {{customer.lastName}}</a>
+         </div>
+         <div class = "card-body"> 
+          <p><b>Phone :</b> {{customer.phone}}</p>
+          <a href="" routerLink = "/customer/edit/{{ customer.id }}" class = "btn btn-outline-primary btn-sm">
+           <i class = "fa fa-pencil"></i>  Edit
+          </a>
+          <a  *ngIf="settings.deleteCustomerBtn" (click)="onDelCustomer(customer.id, $event)" href="#" class = "btn btn-outline-danger btn-sm ml-3">
+            <i class = "fa fa-trash"></i>
+           Delete
+          </a>
+         </div>
+       </div>
+    </div>
+  </div>
+

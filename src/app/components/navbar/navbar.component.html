@@ -1,0 +1,41 @@
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="" routerLink="/">GlobCrm</a>
+    <button *ngIf="isLoggedIn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+      aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div *ngIf="isLoggedIn" class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item ">
+          <a class="nav-link" href="" routerLink="/">Dashboard</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="" routerLink="/customers">Customers</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+          <div class="dropdown">
+            <a class=" dropdown-toggle text-white " href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              {{userEmail}}
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="" routerLink="/settings">
+                <i class="fa fa-cog"></i>
+                Settings
+              </a>
+              <div class='dropdown-divider'></div>
+              <a class="dropdown-item" href="#" (click)="onLogOutBtn($event)">
+                <i class="fa fa-sign-out"></i>
+                Logout
+              </a>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+  </nav>
+</header>

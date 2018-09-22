@@ -1,0 +1,41 @@
+<div class="row mt-5 mb-5">
+  <div class="col-sm-4 m-auto">
+   <form #loginForm = "ngForm" (ngSubmit) = "onLoginSubmit(loginForm)" autocomplete="off">
+     <h1>GlobCRM Login Page</h1>
+     <div class="form-group">
+       <label for="email"><span class="text-danger">*</span>Email:</label>
+       <input 
+        type = "email"
+        id = "email"
+        class = "form-control"
+        name="email"
+        #le = "ngModel"
+        [(ngModel)] = "email"
+        [ngClass] = "{ 'is-invalid': le.errors && le.touched }"
+        required
+        pattern = '^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,3})$'
+       >
+       <div [hidden] = "!le.errors?.required"  class = "invalid-feedback">A valid email is required</div>
+       <div [hidden] = "!le.errors?.pattern"  class = "invalid-feedback">A valid email is required</div>
+     </div>
+
+     <div class = "form-group">
+      <label for = "password"><span class="text-danger">*</span> Password:</label>
+      <input
+       class= "form-control"
+       type = "password"
+       name = "password"
+       id = "password"
+       #lp = "ngModel"
+       [(ngModel)] = "password"
+       [ngClass] = "{ 'is-invalid': lp.errors && lp.touched }"
+       required
+       minlength="6"
+       maxlength="10"
+      >
+      <div [hidden] = "lp.errors?.minlength && lp.errors?.maxlength && lp.errors?.required" class = "invalid-feedback">Password is required and must be min 6 max 10 charachters</div>
+     </div>
+     <button type = "submit" name="submit" [disabled]="lp.errors || le.errors" class="btn btn-primary btn-lg btn-block" >Login</button> 
+   </form>
+  </div>
+</div>

@@ -1,0 +1,81 @@
+<div class="row mt-5">
+  <div class="col-sm-12">
+    <a href="" routerLink="/customers">
+      <i class="fa fa-chevron-circle-left"></i>
+      Back
+    </a>
+  </div>
+</div>
+<div class="row mt-5">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-header ">
+        Edit Customer
+      </div>
+      <div class="card-body">
+        <form #customerForm="ngForm" (ngSubmit)="onSubmit(customerForm)" autocomplete="off">
+          <div class="form-group">
+            <label for="first-name"><span class = "text-danger">*</span> Name</label>
+            <input [(ngModel)]="customer.firstName" #cfn="ngModel" [ngClass]="{'is-invalid':cfn.errors && cfn.touched}" required minlength="2"
+              type="text" class="form-control" id="first-name" name="firstName">
+            <div class="invalid-feedback" [hidden]="!cfn.errors?.required">
+              First Name is required
+            </div>
+            <div class="invalid-feedback" [hidden]="!cfn.errors?.minlength">
+              First Name must contain min 2 charachters
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="lastt-name"><span class = "text-danger">*</span>Last Name</label>
+            <input [(ngModel)]="customer.lastName" #cln="ngModel" [ngClass]="{'is-invalid':cln.errors && cln.touched}" required minlength="2"
+              type="text" class="form-control" id="last-name" name="lastName">
+            <div class="invalid-feedback" [hidden]="!cln.errors?.required">
+              Last Name is required
+            </div>
+            <div class="invalid-feedback" [hidden]="!cln.errors?.minlength">
+              Last Name must contain min 2 charachters
+            </div>
+          </div>
+
+          <div class="form-group">
+              <label for="email">Email</label>
+              <input [(ngModel)]="customer.email" #cemail="ngModel" [ngClass]="{'is-invalid':cemail.errors && cemail.touched}" pattern = '^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,3})$'
+                type="email" class="form-control" id="email" name="email">
+              
+              <div class="invalid-feedback" [hidden]="!cemail.errors?.pattern">
+                A valid email is required
+              </div>
+            </div>
+
+            <div class="form-group">
+                <label for="phone"><span class = "text-danger">*</span>Phone</label>
+                <input [(ngModel)]="customer.phone" #cphone="ngModel" [ngClass]="{'is-invalid':cphone.errors && cphone.touched}" required pattern = '^\d{8,10}$'
+                  type="tel" class="form-control" id="phone" name="phone">
+
+                  <div class="invalid-feedback" [hidden]="!cphone.errors?.required">
+                       Phone is required
+                    </div>
+                
+                <div class="invalid-feedback" [hidden]="!cphone.errors?.pattern">
+                  A valid phone is required
+                </div>
+              </div>
+
+              <div class = "form-group">
+                <label for="address">Address:</label>
+                 <input #search type="text" id="address" [(ngModel)]="customer.address" name = "address" class = "form-control">
+              </div>
+
+              <div class = "form-group">
+                  <label for="notes">Notes:</label>
+                   <textarea class="form-control" rows="5" name="notes" [(ngModel)]="customer.notes" id="notes"></textarea>
+                </div>
+
+                <input [disabled]="!customerForm.valid" class="btn btn-primary btn-block" type="submit" name="submit" value="Save Customer">
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

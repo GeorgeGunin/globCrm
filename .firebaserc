@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "globcrm-de27b",
+    "staging": "globcrm-40331"
+  }
+}
